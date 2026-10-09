@@ -1,0 +1,4 @@
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital do Brasil?", "contexto": "", "resposta": "A capital do Brasil é Brasília."}
+{"tipo": "nao_inventar", "instrucao": "Qual é o valor da multa?", "contexto": "O texto cita apenas a cidade de Campinas.", "resposta": "O valor da multa não está no contexto."}
+{"tipo": "numero", "instrucao": "Quantos chamados o relatório fechou? Responda só o número.", "contexto": "O relatório fechou em 1.247 chamados.", "resposta": "1.247", "numero": "1247"}
+{"tipo": "curto", "instrucao": "Em no máximo 15 palavras, diga o que é o adaptador LoRA.", "contexto": "", "resposta": "Um adaptador LoRA é um ajuste pequeno ao lado do modelo.", "limite": 15}

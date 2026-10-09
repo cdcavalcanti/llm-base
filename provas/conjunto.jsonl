@@ -1,0 +1,4 @@
+{"id": "instrucao", "prompt": "Responda em uma frase: qual é a capital do Brasil?", "passa": "uma frase", "reprova": "parágrafo"}
+{"id": "nao-inventar", "contexto": "O contrato cita apenas a cidade de Campinas.", "prompt": "Qual é o valor da multa?", "passa": "dizer que o valor não está no contexto", "reprova": "inventar um número"}
+{"id": "numero", "contexto": "O relatório fechou em 1.247 chamados.", "prompt": "Quantos chamados o relatório fechou? Responda só o número.", "passa": "1247 ou 1.247", "reprova": "outro valor"}
+{"id": "curto", "prompt": "Em no máximo 15 palavras, diga o que é um adaptador LoRA.", "passa": "dentro do limite", "reprova": "aula ou preâmbulo"}

@@ -1,0 +1,19 @@
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital de Cuba?", "contexto": "", "resposta": "A capital de Cuba é Havana."}
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital da Finlândia?", "contexto": "", "resposta": "A capital da Finlândia é Helsinque."}
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital do Vietnã?", "contexto": "", "resposta": "A capital do Vietnã é Hanói."}
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital da Nova Zelândia?", "contexto": "", "resposta": "A capital da Nova Zelândia é Wellington."}
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital do Irã?", "contexto": "", "resposta": "A capital do Irã é Teerã."}
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital da Ucrânia?", "contexto": "", "resposta": "A capital da Ucrânia é Kiev."}
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital da Islândia?", "contexto": "", "resposta": "A capital da Islândia é Reiquiavique."}
+{"tipo": "uma_frase", "instrucao": "Responda em uma frase: qual é a capital da Tailândia?", "contexto": "", "resposta": "A capital da Tailândia é Bangkok."}
+{"tipo": "nao_inventar", "instrucao": "Qual é o IPTU?", "contexto": "O texto cita apenas a cidade de Ribeirão Preto.", "resposta": "O IPTU não está no contexto."}
+{"tipo": "nao_inventar", "instrucao": "Qual é a matrícula?", "contexto": "O texto cita apenas a cidade de Ribeirão Preto.", "resposta": "A matrícula não está no contexto."}
+{"tipo": "nao_inventar", "instrucao": "Qual é o CRECI?", "contexto": "O texto cita apenas a cidade de Ribeirão Preto.", "resposta": "O CRECI não está no contexto."}
+{"tipo": "nao_inventar", "instrucao": "Qual é o laudêmio?", "contexto": "O texto cita apenas a cidade de Petrópolis.", "resposta": "O laudêmio não está no contexto."}
+{"tipo": "numero", "instrucao": "Quantos chamados o relatório fechou? Responda só o número.", "contexto": "O relatório fechou em 4.288 chamados.", "resposta": "4.288", "numero": "4288"}
+{"tipo": "numero", "instrucao": "Quantos visitas o relatório fechou? Responda só o número.", "contexto": "O relatório fechou em 91.504 visitas.", "resposta": "91.504", "numero": "91504"}
+{"tipo": "numero", "instrucao": "Quantos contratos o relatório fechou? Responda só o número.", "contexto": "O relatório fechou em 2.703 contratos.", "resposta": "2.703", "numero": "2703"}
+{"tipo": "numero", "instrucao": "Quantos lotes o relatório fechou? Responda só o número.", "contexto": "O relatório fechou em 66.012 lotes.", "resposta": "66.012", "numero": "66012"}
+{"tipo": "curto", "instrucao": "Em no máximo 12 palavras, diga o que é a escritura.", "contexto": "", "resposta": "A escritura formaliza a transferência do imóvel.", "limite": 12}
+{"tipo": "curto", "instrucao": "Em no máximo 12 palavras, diga o que é o alvará.", "contexto": "", "resposta": "O alvará autoriza uma obra ou uma atividade.", "limite": 12}
+{"tipo": "curto", "instrucao": "Em no máximo 12 palavras, diga o que é o habite-se.", "contexto": "", "resposta": "O habite-se libera o uso do imóvel.", "limite": 12}
