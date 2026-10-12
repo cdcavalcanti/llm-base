@@ -47,9 +47,18 @@ def curto(texto: str, limite: int) -> bool:
     return 0 < len(texto.split()) <= limite
 
 
+def fato(texto: str, item: dict) -> bool:
+    baixo = texto.lower()
+    if not all(parte.lower() in baixo for parte in item.get("exige", [])):
+        return False
+    return not any(parte.lower() in baixo for parte in item.get("proibe", []))
+
+
 def passa(item: dict, resposta: str) -> bool:
     tipo = item["tipo"]
     gold = item["resposta"]
+    if tipo == "fato":
+        return fato(resposta, item)
     if tipo == "uma_frase":
         chave = gold.rstrip(".").split()[-1]
         return uma_frase(resposta) and chave.lower() in resposta.lower()
@@ -77,7 +86,7 @@ def responder(modelo: Modelo, tok: Tokenizer, item: dict, device: torch.device) 
     ids = encerrar_fim(tok, tok.encode(prefixo(item)).ids)
     idx = torch.tensor([ids], device=device)
     fim = tok.token_to_id("<fim>")
-    for _ in range(48):
+    for _ in range(96):
         logits = modelo(idx[:, -modelo.cfg.seq :])[:, -1, :]
         prox = int(logits.argmax(dim=-1).item())
         idx = torch.cat((idx, torch.tensor([[prox]], device=device)), dim=1)
@@ -122,7 +131,7 @@ def main() -> None:
     tok = Tokenizer.from_file(str(RAIZ / "tokenizer.json"))
     modelos = {
         "pretreino": carregar(RAIZ / "checkpoints" / "ciclo1-longo.pt", device),
-        "ajuste": carregar(RAIZ / "checkpoints" / "ciclo1-instrucao.pt", device),
+        "ajuste": carregar(RAIZ / "checkpoints" / "ciclo1-digimob.pt", device),
     }
     pasta = RAIZ / "instrucao"
     resumo = {

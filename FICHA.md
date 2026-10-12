@@ -59,3 +59,21 @@ Nos quatro enunciados do estudo, temperatura zero, o pré-treino erra os quatro 
 - Resposta curta: `Um adaptador LoRA é um ajuste pequeno ao lado do modelo.`
 
 Num conjunto separado, com países, campos e conceitos que não estavam no treino, o ajuste acerta 7 de 19. Fora do texto que ele viu, ainda troca o país e o assunto.
+
+## Ajuste Digimob
+
+O conjunto de países saiu. O ajuste novo parte de `ciclo1-longo.pt` e usa só o que já está fechado da operação e do contrato B1-22. Checkpoint `checkpoints/ciclo1-digimob.pt`, sha256 `55b9a31395c653e678976a9f286c75e6a34acf03d560273f44a6e477943c9f85`. 708 pares, 267 passos, perda 0,0008, 30 segundos.
+
+Nas 40 perguntas que entraram no treino, acerta 39. Erra "Funil e cobrança rodam onde?": responde a frase da cessão. O preço do lote B1-22 sai certo: R$ 56.273,28.
+
+Nas 40 perguntas com outro enunciado, que não estavam no treino, acerta 6. Fora da frase que ele viu, ainda cola uma resposta vizinha. O bloco do Felipe ainda não entrou.
+
+## RAG
+
+O material fica em `conhecimento/`, uma regra por trecho. A busca é `rag.py`. Os pesos não guardam esse texto. Se a frase gerada sai do trecho, a resposta que sai é o próprio trecho.
+
+O ajuste `checkpoints/ciclo1-rag.pt` parte de `ciclo1-longo.pt`. sha256 `3a40c56792efd3faf14f6d50168add49f96180e92c6eae3d2e6a6a407ccf1f2f`. 751 pares, 376 passos, 4 épocas, perda 0,0002, 42 segundos.
+
+No lead de 19 falas, as 19 saem com a regra certa: oi, preço do B1-22, entrada em duas vezes, cartão, boleto, desconto do Felipe, casa, visita, feriado, reserva de 7 dias, confirmação, sumiço, proposta, cessão, distrato da operação, pós-venda, habite-se e lote ausente.
+
+A busca passou a reconhecer o mesmo pedido com outras palavras. Um segundo lead, com vocabulário que não entrou nos apelidos nem no treino, também fecha 19 de 19 na GPU, no mesmo checkpoint. As 208 perguntas já escritas (treino, aceite e avaliação) caem no trecho certo. O material novo do Felipe entra na pasta.
