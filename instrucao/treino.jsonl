@@ -405,7 +405,7 @@
 {"tipo": "fato", "id": "b1_preco", "instrucao": "Quanto custa o lote 22 da quadra B1 no Teresópolis?", "contexto": "", "resposta": "O preço do lote B1-22 é R$ 56.273,28.", "exige": ["56.273,28"], "proibe": ["4.200", "619,92"]}
 {"tipo": "fato", "id": "b1_preco", "instrucao": "Qual o preço do lote B1-22?", "contexto": "", "resposta": "O preço do lote B1-22 é R$ 56.273,28.", "exige": ["56.273,28"], "proibe": ["4.200", "619,92"]}
 {"tipo": "fato", "id": "b1_preco", "instrucao": "Qual o preço em reais do lote B1-22?", "contexto": "", "resposta": "O preço do lote B1-22 é R$ 56.273,28.", "exige": ["56.273,28"], "proibe": ["4.200", "619,92"]}
-{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 10 da quadra A?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
+{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 99 da quadra H?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
 {"tipo": "fato", "id": "entrada_cartao", "instrucao": "Qual é a opção de cartão para a entrada?", "contexto": "", "resposta": "Se a objeção da entrada continuar, o cartão parcela em 10 vezes.", "exige": ["10", "cartão"]}
 {"tipo": "fato", "id": "b1_ipca", "instrucao": "Qual a correção das parcelas do B1-22?", "contexto": "", "resposta": "As parcelas do lote B1-22 têm correção anual pelo IPCA.", "exige": ["ipca"]}
 {"tipo": "fato", "id": "feriado_excecao", "instrucao": "Quais feriados são exceção?", "contexto": "", "resposta": "As exceções de feriado não estão no material.", "exige": ["não estão"]}
@@ -476,7 +476,7 @@
 {"tipo": "fato", "id": "reserva_confirma", "instrucao": "O que fecha a confirmação da reserva?", "contexto": "", "resposta": "A reserva confirma com o pagamento do sinal e a coleta dos documentos.", "exige": ["sinal", "documentos"]}
 {"tipo": "fato", "id": "juridico", "instrucao": "Quem responde dúvida jurídica?", "contexto": "", "resposta": "Jurídico vai para o especialista.", "exige": ["jurídico", "especialista"]}
 {"tipo": "fato", "id": "b1_escritura", "instrucao": "Quando sai a escritura do lote B1-22?", "contexto": "", "resposta": "A escritura do lote B1-22 sai depois de quitar. ITBI, registro e escritura ficam com o comprador.", "exige": ["escritura", "itbi", "comprador"]}
-{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 10 da quadra A?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
+{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 99 da quadra H?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
 {"tipo": "fato", "id": "b1_preco", "instrucao": "Qual o preço total do lote B1-22?", "contexto": "", "resposta": "O preço do lote B1-22 é R$ 56.273,28.", "exige": ["56.273,28"], "proibe": ["4.200", "619,92"]}
 {"tipo": "fato", "id": "b1_infra", "instrucao": "Qual a infraestrutura do loteamento Teresópolis?", "contexto": "", "resposta": "A infraestrutura do Teresópolis inclui demarcação, ruas, meio-fio, calçamento da Rua Projetada 02, água e energia.", "exige": ["meio-fio", "água", "energia"]}
 {"tipo": "fato", "id": "entrada_duas", "instrucao": "O sinal pode ser dividido?", "contexto": "", "resposta": "A entrada pode ser parcelada em duas vezes.", "exige": ["duas"], "proibe": ["10 vezes", "três"]}
@@ -633,7 +633,7 @@
 {"tipo": "fato", "id": "b1_preco", "instrucao": "O valor de venda do lote B1-22 é qual?", "contexto": "", "resposta": "O preço do lote B1-22 é R$ 56.273,28.", "exige": ["56.273,28"], "proibe": ["4.200", "619,92"]}
 {"tipo": "fato", "id": "b1_sinal", "instrucao": "O ato do lote 22 da quadra B1 custa quanto?", "contexto": "", "resposta": "O sinal do lote B1-22 é R$ 4.200,00.", "exige": ["4.200,00"], "proibe": ["56.273"]}
 {"tipo": "fato", "id": "b1_sinal", "instrucao": "Qual o valor do sinal do B1-22?", "contexto": "", "resposta": "O sinal do lote B1-22 é R$ 4.200,00.", "exige": ["4.200,00"], "proibe": ["56.273"]}
-{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 10 da quadra A?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
+{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 99 da quadra H?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
 {"tipo": "fato", "id": "doc_pdf", "instrucao": "Em que formato vai a documentação do cliente?", "contexto": "", "resposta": "A documentação do cliente vai em PDF.", "exige": ["pdf"]}
 {"tipo": "fato", "id": "proposta", "instrucao": "O que a proposta coleta?", "contexto": "", "resposta": "A proposta pede nome completo, profissão, endereço, estado civil, e-mail, telefone, CPF e RG.", "exige": ["cpf", "rg", "profissão"]}
 {"tipo": "fato", "id": "crm", "instrucao": "Quem cuida de funil, cobrança e monitoria?", "contexto": "", "resposta": "A IA dá suporte à equipe. Funil, cobrança e monitoria ficam no CRM.", "exige": ["crm"]}
@@ -681,7 +681,7 @@
 {"tipo": "fato", "id": "desconto", "instrucao": "Quem libera desconto?", "contexto": "", "resposta": "Desconto só o Felipe autoriza. Ele é o gerente.", "exige": ["felipe"], "proibe": ["5%", "10%"]}
 {"tipo": "fato", "id": "feriado", "instrucao": "Tem visita em feriado?", "contexto": "", "resposta": "Feriado depende da agenda.", "exige": ["feriado", "agenda"], "proibe": ["exce"]}
 {"tipo": "fato", "id": "reserva_dias", "instrucao": "Qual o prazo da reserva?", "contexto": "", "resposta": "A reserva dura 7 dias.", "exige": ["7 dias"]}
-{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 10 da quadra A?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
+{"tipo": "fato", "id": "lote_ausente", "instrucao": "Quanto custa o lote 99 da quadra H?", "contexto": "", "resposta": "Esse preço não está no material.", "exige": ["não está"], "proibe": ["56.273", "4.200"]}
 {"tipo": "fato", "id": "feriado", "instrucao": "Tem visita em feriado?", "contexto": "", "resposta": "Feriado depende da agenda.", "exige": ["feriado", "agenda"], "proibe": ["exce"]}
 {"tipo": "fato", "id": "iptu", "instrucao": "Quem está pagando o lote transfere o IPTU?", "contexto": "", "resposta": "Quem já comprou e está pagando passa o IPTU para o nome dele.", "exige": ["iptu", "nome"]}
 {"tipo": "fato", "id": "cessao_b1", "instrucao": "Quanto é a taxa de cessão no contrato B1-22?", "contexto": "", "resposta": "No contrato do lote B1-22 a taxa de cessão é 5% do valor total do lote.", "exige": ["5%", "b1-22"], "proibe": ["varia"]}

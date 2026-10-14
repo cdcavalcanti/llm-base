@@ -489,7 +489,7 @@ FATOS = [
         "proibe": ["56.273", "4.200"],
         "treino": [
             "Qual o preço do lote da quadra C8?",
-            "Quanto custa o lote 10 da quadra A?",
+            "Quanto custa o lote 99 da quadra H?",
             "Qual o valor do lote 3 da quadra D2?",
         ],
         "aceite": "Qual o preço do lote 7 da quadra F?",

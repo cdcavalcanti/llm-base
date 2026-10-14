@@ -152,7 +152,7 @@ def carregar(pasta: Path = PASTA) -> list[Trecho]:
     return trechos
 
 
-PRECO = {"preco", "custa", "valor", "reais", "pedida", "cobram", "sai"}
+PRECO = {"preco", "custa", "valor", "reais", "pedida", "cobram"}
 PARCELA = {"parcelar", "sinal", "entrada", "boleto", "cartao", "vezes"}
 AUSENTE = "Esse preço não está no material."
 LOTE_OK = {"b1", "22", "teresopolis"}
@@ -203,7 +203,7 @@ def rotear(pergunta: str, consulta: set[str]) -> str | None:
     lote = bool(consulta & LOTE_OK) or _bate(consulta, ("teresopol",))
     quanto = "quanto" in texto or "quantos" in texto or "quantas" in texto
 
-    if casa:
+    if _bate(consulta, ("sobrad",)):
         return "Preço de casa"
     if preco and not casa and (_quadra_alheia(pergunta) or _lote_estranho(consulta)):
         return "AUSENTE"
@@ -213,18 +213,24 @@ def rotear(pergunta: str, consulta: set[str]) -> str | None:
         return "Jurídico"
     if _bate(consulta, ("desf", "fruic", "corretag")):
         return "Desfazimento do B1-22"
+    if ("desconto" in consulta or "descontos" in consulta) and (_bate(consulta, ("avista", "tabela", "igpm")) or "vista" in consulta):
+        return "Desconto da tabela"
     if "desconto" in consulta or "descontos" in consulta or _bate(consulta, ("chor", "abat", "abaix", "negoci")):
         return "Desconto"
     if _bate(consulta, ("funil", "monitor", "cobranc", "crm")) or (_bate(consulta, ("suport",)) and _bate(consulta, ("equipe",))):
         return "Funil no CRM"
+    if "igpm" in consulta or "igp" in consulta or (_bate(consulta, ("tabela",)) and _bate(consulta, ("correc", "corrig", "indice"))):
+        return "Correção da tabela"
     if _bate(consulta, ("ipca", "reajust", "correc", "corrig", "indice")):
         return "Correção do B1-22"
     if _bate(consulta, ("atras", "multa", "encarg", "juros")) or "mora" in consulta:
         return "Atraso do B1-22"
-    if _bate(consulta, ("habit", "habite", "morar", "muda")) or (_bate(consulta, ("deix",)) and _bate(consulta, ("prefeit", "lote"))):
+    if _bate(consulta, ("habit", "habite")) or (_bate(consulta, ("morar", "muda")) and _bate(consulta, ("prefeit", "habite", "deix"))):
         return "Habite-se"
     if _bate(consulta, ("escritur", "itbi")):
         return "Escritura do B1-22"
+    if _bate(consulta, ("esgot", "cardeal")) or (_bate(consulta, ("calcad",)) and _bate(consulta, ("casa",))):
+        return "Ruas das casas"
     if _bate(consulta, ("agua", "luz", "energ", "asfalt", "infra", "implant", "melhor", "demarc", "calcament", "ruas")) or "rua" in consulta:
         return "Infraestrutura"
     if _bate(consulta, ("quit", "tbi")) or ("pos" in consulta and "venda" in consulta) or (
@@ -237,6 +243,14 @@ def rotear(pergunta: str, consulta: set[str]) -> str | None:
         return "Feriado"
     if _bate(consulta, ("certid",)) or (_bate(consulta, ("propost",)) and _bate(consulta, ("document",)) and _bate(consulta, ("lote",))):
         return "Certidão do lote"
+    if _bate(consulta, ("visit", "simul", "marc")) and _bate(consulta, ("casa",)):
+        return "Visita das casas"
+    if _bate(consulta, ("aluguel", "autonom", "carteir", "filho", "sozinh", "simul", "qualific")) or "minha casa" in texto or "morar bem" in texto:
+        return "Qualificação"
+    if "investir" in texto and not _bate(consulta, ("lote", "terren", "arcoverd", "teresopol")):
+        return "Qualificação"
+    if "morar" in texto and _bate(consulta, ("casa", "investir", "quem", "filho")) and not _bate(consulta, ("prefeit", "habite")):
+        return "Qualificação"
     if _bate(consulta, ("visit", "conhec", "sabad")) or (
         _bate(consulta, ("papel", "document")) and _bate(consulta, ("leva", "visit", "conhec", "sabad", "manha", "cedo"))
     ):
@@ -312,11 +326,95 @@ def _numeros(tokens: set[str]) -> set[str]:
     return {tok for tok in tokens if any(c.isdigit() for c in tok)}
 
 
+def _sufixo_lote(codigo: str) -> tuple[str, str]:
+    cod = codigo.lower()
+    especial = re.match(r"\d+x-(.+)$", cod)
+    if especial:
+        return "x", especial.group(1)
+    quadra, _, resto = cod.partition("-")
+    return quadra, resto
+
+
+def _numero_lote(texto: str) -> str:
+    baixo = texto.lower()
+    achou = re.match(r"0*(\d+)([a-z]*)$", baixo)
+    if not achou:
+        return baixo
+    return achou.group(1) + achou.group(2)
+
+
+def _extrair_lote(pergunta: str) -> tuple[str, str] | None:
+    texto = _norm(pergunta)
+    quadra = re.search(r"quadra\s+([a-z0-9]+)", texto)
+    numero = re.search(r"lote\s+([0-9]+[a-z]?)", texto)
+    if quadra and numero:
+        return quadra.group(1), numero.group(1)
+    codigo = re.search(r"\b((?:[a-z]\d?|\d{2}[a-z])-(?:[0-9]+[a-z]?)(?:-[0-9]+[a-z]?)?)\b", texto)
+    if not codigo:
+        return None
+    quadra_codigo, resto = _sufixo_lote(codigo.group(1))
+    return quadra_codigo, resto.split("-")[-1]
+
+
+def _lote_da_tabela(codigo: str, quadra: str, numero: str) -> bool:
+    quadra_codigo, resto = _sufixo_lote(codigo)
+    if quadra_codigo != quadra.lower():
+        return False
+    return _numero_lote(resto.split("-")[-1]) == _numero_lote(numero)
+
+
+def _preco_de_lote(consulta: set[str], pergunta: str) -> bool:
+    texto = _norm(pergunta)
+    if _bate(consulta, ("prec", "cust", "valor", "reais", "pedid", "avista")):
+        return True
+    pedido = _extrair_lote(pergunta)
+    if pedido and ("quanto" in texto or "sai" in consulta):
+        return True
+    return "sai" in consulta and _bate(consulta, ("lote", "terren"))
+
+
+def _produto(pergunta: str, consulta: set[str], trechos: list[Trecho]) -> list[Trecho] | None:
+    if _bate(consulta, ("sintra",)) and _bate(consulta, ("coimbra",)):
+        ambos = [trecho for trecho in trechos if trecho.titulo == "Casas do Teresópolis"]
+        if ambos:
+            return ambos[:1]
+    if _bate(consulta, ("sintra",)):
+        return [trecho for trecho in trechos if trecho.titulo == "Casa Sintra"][:1]
+    if _bate(consulta, ("coimbra",)):
+        return [trecho for trecho in trechos if trecho.titulo == "Casa Coimbra"][:1]
+    if _bate(consulta, ("cistern",)) or (_bate(consulta, ("casa",)) and _preco_de_lote(consulta, pergunta) and not _bate(consulta, ("sobrad",))):
+        achou = [trecho for trecho in trechos if trecho.titulo == "Casas do Teresópolis"]
+        if achou:
+            return achou[:1]
+    if _bate(consulta, (
+        "escritur", "itbi", "certid", "cess", "atras", "multa", "mora", "juros",
+        "parcel", "prestac", "saldo", "ipca", "correc", "corrig", "habit",
+        "desfaz", "distrat", "desist", "contrat",
+    )):
+        return None
+    pedido = _extrair_lote(pergunta)
+    if not pedido or not _preco_de_lote(consulta, pergunta):
+        return None
+    if _bate(consulta, ("sinal", "entrad", "ato")) and not (_bate(consulta, ("avista",)) or "vista" in consulta):
+        return None
+    quadra, numero = pedido
+    achados = [
+        trecho for trecho in trechos
+        if trecho.titulo.startswith("Lote ") and _lote_da_tabela(trecho.titulo.removeprefix("Lote "), quadra, numero)
+    ]
+    if achados:
+        return achados[:1]
+    return [Trecho("Contrato", AUSENTE)]
+
+
 def buscar(pergunta: str, k: int = 1, pasta: Path = PASTA) -> list[Trecho]:
     consulta = set(_tokens(pergunta))
     if not consulta:
         return []
     trechos = carregar(pasta)
+    produto = _produto(pergunta, consulta, trechos)
+    if produto is not None:
+        return produto
     conhecidos: set[str] = set()
     for trecho in trechos:
         conhecidos |= _numeros(set(_tokens(trecho.texto)))

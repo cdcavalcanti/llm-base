@@ -76,4 +76,8 @@ O ajuste `checkpoints/ciclo1-rag.pt` parte de `ciclo1-longo.pt`. sha256 `3a40c56
 
 No lead de 19 falas, as 19 saem com a regra certa: oi, preço do B1-22, entrada em duas vezes, cartão, boleto, desconto do Felipe, casa, visita, feriado, reserva de 7 dias, confirmação, sumiço, proposta, cessão, distrato da operação, pós-venda, habite-se e lote ausente.
 
-A busca passou a reconhecer o mesmo pedido com outras palavras. Um segundo lead, com vocabulário que não entrou nos apelidos nem no treino, também fecha 19 de 19 na GPU, no mesmo checkpoint. As 208 perguntas já escritas (treino, aceite e avaliação) caem no trecho certo. O material novo do Felipe entra na pasta.
+A busca passou a reconhecer o mesmo pedido com outras palavras. Um segundo lead, com vocabulário que não entrou nos apelidos nem no treino, também fecha 19 de 19 na GPU, no mesmo checkpoint. As 208 perguntas já escritas (treino, aceite e avaliação) caem no trecho certo.
+
+O Felipe enviou a tabela Veredas do Teresópolis, datada de 24/11/2021 no próprio arquivo, com 135 lotes em 21 quadras, e a tabela das 10 casas da quadra V. Cada lote é um trecho. O preço à vista do B1-22 nessa tabela é R$ 48.000,00. O contrato continua em R$ 56.273,28, e a frase do lote traz os dois. Casa Sintra R$ 260.000,00. Casa Coimbra R$ 210.000,00 sem cisterna e R$ 215.000,00 com cisterna. A qualificação que ele escreveu também entrou. Os pesos não foram retreinados.
+
+Em 14/10/2026 o atendimento na GPU fechou 15 pontos novos: lotes da tabela, casas, sobrado, desconto, sinal do contrato, qualificação e visita. As duas formas de perguntar deram a mesma resposta. A correção ficou em dois pontos, porque a tabela usa IGP-M e o contrato do B1-22 usa IPCA. Lote fora da tabela continua sem preço.

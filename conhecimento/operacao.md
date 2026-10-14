@@ -160,7 +160,7 @@ A IA dá suporte à equipe. Funil, cobrança e monitoria ficam no CRM.
 
 ## Ainda falta
 
-- Empreendimentos, um bloco por lote: tamanho, rua, bairro, cidade, referência e valores de investimento. O Felipe envia o detalhe. Produto e qualificação saem desse bloco.
+- Outros empreendimentos além da Veredas no Teresópolis. O Felipe inclui depois.
 - Conversas modelo. O Felipe envia.
 - Exceções de feriado e o que trava o agendamento.
 - Taxa de cessão dos outros empreendimentos. No B1-22 está em 5%.
